@@ -82,7 +82,7 @@ namespace ExcelCompare
                     {
                         var rangeSelected = (rangeSheet1.Cells[rCnt, cCnt] as Excel.Range);
                         var address = rangeSelected.Address;
-                        if (!columnsToExclude.Contains(address.Substring(0, 1)))
+                        if (!columnsToExclude.Contains(address.Substring(1, 1)))
                         {
                             str += (string)rangeSelected.Value2 + ",";
                         }
@@ -90,14 +90,11 @@ namespace ExcelCompare
                     str = str.TrimEnd(',');
                     if (!string.IsNullOrEmpty(str))
                     {
-                        if (!rowdataSheet1.ContainsKey(str))
+                        //if (!rowdataSheet1.ContainsKey(str)) //TO CHECK DUPLICATE
                         {
                             rowdataSheet1.Add(str, rCnt);
                         }
-                        else
-                        {
-                            int x = 1;
-                        }                       
+                                              
                     }
                 }
 
@@ -115,7 +112,7 @@ namespace ExcelCompare
                     {
                         var rangeSelected = (rangeSheet2.Cells[rCnt, cCnt] as Excel.Range);
                         var address = rangeSelected.Address;
-                        if (!columnsToExclude.Contains(address.Substring(0, 1)))
+                        if (!columnsToExclude.Contains(address.Substring(1, 1)))
                         {
                             str += (string)rangeSelected.Value2 + ",";
                         }
